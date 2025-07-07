@@ -2,6 +2,9 @@
 
 A modern, real-time voting web application featuring FC Barcelona vs Real Madrid in a stunning split-screen interface. Vote for your favorite team and watch the jerseys fly off the screen with beautiful animations!
 
+![image](https://github.com/user-attachments/assets/edf4556b-8321-412f-8174-6e017a140e7f)
+
+
 ## ✨ Features
 
 - **Split-Screen Design**: Authentic team colors and branding for both FC Barcelona and Real Madrid
@@ -13,12 +16,6 @@ A modern, real-time voting web application featuring FC Barcelona vs Real Madrid
 
 ## 🚀 Quick Start
 
-### Option 2: Development Mode
-```bash
-# Start development server
-./run-local.sh
-```
-
 ### Option 1: Container
 ```bash
 # Build and run with Docker/Podman
@@ -27,6 +24,12 @@ docker run -p 8000:8000 soccer-vote-app
 # OR
 podman build -t soccer-vote-app .
 podman run -p 8000:8000 soccer-vote-app
+```
+
+### Option 2: Development Mode
+```bash
+# Start development server
+./run-local.sh
 ```
 
 ## 🏗️ Project Structure
