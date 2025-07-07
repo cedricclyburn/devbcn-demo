@@ -1,0 +1,34 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="barcelonaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A50E2C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#004D98;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="barcelonaStripes" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="10" height="20" fill="#A50E2C"/>
+      <rect x="10" y="0" width="10" height="20" fill="#004D98"/>
+    </pattern>
+  </defs>
+  
+  <!-- Jersey body -->
+  <path d="M75 50 Q75 40 85 40 L215 40 Q225 40 225 50 L225 80 Q235 85 235 95 L235 180 Q235 190 225 190 L75 190 Q65 190 65 180 L65 95 Q65 85 75 80 Z" 
+        fill="url(#barcelonaStripes)" stroke="#FFED02" stroke-width="3"/>
+  
+  <!-- Sleeves -->
+  <ellipse cx="55" cy="75" rx="25" ry="40" fill="url(#barcelonaStripes)" stroke="#FFED02" stroke-width="2"/>
+  <ellipse cx="245" cy="75" rx="25" ry="40" fill="url(#barcelonaStripes)" stroke="#FFED02" stroke-width="2"/>
+  
+  <!-- Collar -->
+  <ellipse cx="150" cy="50" rx="50" ry="15" fill="none" stroke="#FFED02" stroke-width="4"/>
+  
+  <!-- Barcelona crest area -->
+  <circle cx="100" cy="80" r="20" fill="#A50E2C" stroke="#FFED02" stroke-width="2"/>
+  <text x="100" y="85" text-anchor="middle" fill="#FFED02" font-family="Arial, sans-serif" font-size="12" font-weight="bold">FCB</text>
+  
+  <!-- Sponsor area -->
+  <rect x="120" y="110" width="60" height="20" fill="rgba(255, 237, 2, 0.3)" stroke="#FFED02" stroke-width="1"/>
+  <text x="150" y="125" text-anchor="middle" fill="#FFED02" font-family="Arial, sans-serif" font-size="10">DEVBCN</text>
+  
+  <!-- Player number -->
+  <text x="150" y="165" text-anchor="middle" fill="#FFED02" font-family="Arial, sans-serif" font-size="36" font-weight="bold">10</text>
+</svg> 
