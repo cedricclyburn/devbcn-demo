@@ -11,6 +11,8 @@ A modern, real-time voting web application featuring FC Barcelona vs Real Madrid
 - **Split-Screen Design**: Authentic team colors and branding for both FC Barcelona and Real Madrid
 - **Real-time Voting**: Live vote counts updated instantly across all connected clients
 - **Animated Jerseys**: Beautiful fly-off animations when voting
+- **Live Narration**: Dynamic score announcements with Spanish slang and text-to-speech
+- **OpenAI Integration**: Optional AI-powered narration using local OpenAI API
 - **WebSocket Integration**: Real-time updates without page refresh
 - **Modern Tech Stack**: FastAPI backend + React frontend + TailwindCSS
 - **Multiple Deployment Options**: Container, local deployment, or development mode
@@ -100,6 +102,7 @@ The app uses WebSocket for real-time updates:
 |----------|-------------|---------|
 | `HOST` | Server host | `0.0.0.0` |
 | `PORT` | Server port | `8000` |
+| `VITE_OPENAI_API_URL` | OpenAI API endpoint for narration | `http://localhost:1234/v1/chat/completions` |
 
 ## 📝 License
 

@@ -1,6 +1,6 @@
-# Multi-stage build for Soccer Vote App
+# Multi-stage build for Soccer Vote App (Mac/ARM64 optimized)
 # Stage 1: Build the React frontend
-FROM node:20-alpine AS frontend-builder
+FROM --platform=linux/arm64 node:20-alpine AS frontend-builder
 
 WORKDIR /frontend
 COPY frontend/package*.json ./
@@ -10,7 +10,7 @@ COPY frontend/ .
 RUN npm run build
 
 # Stage 2: Final runtime image
-FROM python:3.12-slim
+FROM --platform=linux/arm64 python:3.12-slim
 
 WORKDIR /app
 
