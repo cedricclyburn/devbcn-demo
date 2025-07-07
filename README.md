@@ -2,7 +2,8 @@
 
 A modern, real-time voting web application featuring FC Barcelona vs Real Madrid in a stunning split-screen interface. Vote for your favorite team and watch the jerseys fly off the screen with beautiful animations!
 
-![image](https://github.com/user-attachments/assets/edf4556b-8321-412f-8174-6e017a140e7f)
+![image](https://github.com/user-attachments/assets/015792fb-483f-4ea0-86f5-631630c342bf)
+
 
 
 ## ✨ Features
