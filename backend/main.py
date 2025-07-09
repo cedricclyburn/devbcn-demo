@@ -6,7 +6,6 @@ from pydantic import BaseModel
 import json
 import asyncio
 from typing import List, Dict, Any
-import os
 
 app = FastAPI(title="Soccer Vote App", version="1.0.0")
 
@@ -19,7 +18,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Vote storage
+# Simple in-memory storage
 votes: Dict[str, int] = {
     "barcelona": 0,
     "real_madrid": 0
@@ -103,7 +102,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Serve the React app and assets
 app.mount("/", StaticFiles(directory="frontend/dist", html=True), name="app")
-
 
 if __name__ == "__main__":
     import uvicorn

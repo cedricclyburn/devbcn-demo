@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { TeamSide } from './components/TeamSide';
+import { Narration } from './components/Narration';
+import { NarrationToggle } from './components/NarrationToggle';
+import { AudioToggle } from './components/AudioToggle';
 import { useWebSocket } from './hooks/useWebSocket';
 import { TeamInfo } from './types';
 
@@ -33,6 +36,8 @@ const teams: TeamInfo[] = [
 function App() {
   const { voteData, isConnected, sendVote } = useWebSocket('/ws');
   const [animatingTeam, setAnimatingTeam] = useState<string | null>(null);
+  const [narrationEnabled, setNarrationEnabled] = useState(false);
+  const [audioEnabled, setAudioEnabled] = useState(false);
 
   const handleVote = async (team: string) => {
     if (animatingTeam) return;
@@ -68,6 +73,14 @@ function App() {
             <div className="text-sm">
               Total Votes: <span className="font-bold">{totalVotes}</span>
             </div>
+            <NarrationToggle 
+              isEnabled={narrationEnabled} 
+              onToggle={() => setNarrationEnabled(!narrationEnabled)} 
+            />
+            <AudioToggle 
+              isEnabled={audioEnabled} 
+              onToggle={() => setAudioEnabled(!audioEnabled)} 
+            />
           </div>
         </div>
       </div>
@@ -99,6 +112,8 @@ function App() {
           </p>
         </div>
       </div>
+      
+      <Narration voteData={voteData} isEnabled={narrationEnabled} />
     </div>
   );
 }
