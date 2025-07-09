@@ -6,42 +6,9 @@ interface NarrationProps {
   isEnabled: boolean;
 }
 
-const spanishSlang = [
-  "¡Qué pasada!",
-  "¡Vamos equipo!",
-  "¡Esto está que arde!",
-  "¡Vaya remontada!",
-  "¡Increíble!",
-  "¡Qué locura!",
-  "¡Esto es épico!",
-  "¡Vaya partidazo!",
-  "¡Esto está que arde!",
-  "¡Qué espectáculo!"
-];
-
 // Get OpenAI API endpoint from environment variable or use default
 const getOpenAIEndpoint = () => {
   return import.meta.env.VITE_OPENAI_API_URL || 'http://localhost:8008/v1/chat/completions';
-};
-
-const generateLocalNarration = (barcelonaVotes: number, realMadridVotes: number): string => {
-  const total = barcelonaVotes + realMadridVotes;
-  const barcelonaPercentage = total > 0 ? Math.round((barcelonaVotes / total) * 100) : 0;
-  const realMadridPercentage = total > 0 ? Math.round((realMadridVotes / total) * 100) : 0;
-  
-  const randomSlang = spanishSlang[Math.floor(Math.random() * spanishSlang.length)];
-  
-  if (total === 0) {
-    return "The match is about to begin! Get ready for some fútbol magic. Vamos!";
-  }
-  
-  if (barcelonaVotes > realMadridVotes) {
-    return `Barça is leading ${barcelonaVotes}-${realMadridVotes}! ${randomSlang} The Blaugrana are dominating with ${barcelonaPercentage}% of the votes!`;
-  } else if (realMadridVotes > barcelonaVotes) {
-    return `Real Madrid is ahead ${realMadridVotes}-${barcelonaVotes}! ${randomSlang} Los Blancos are in control with ${realMadridPercentage}% of the votes!`;
-  } else {
-    return `It's a tie! ${barcelonaVotes}-${realMadridVotes}! ${randomSlang} This is going to be an epic battle!`;
-  }
 };
 
 const generateOpenAINarration = async (barcelonaVotes: number, realMadridVotes: number): Promise<string> => {
@@ -73,10 +40,10 @@ const generateOpenAINarration = async (barcelonaVotes: number, realMadridVotes: 
     }
 
     const data = await response.json();
-    return data.choices[0]?.message?.content || generateLocalNarration(barcelonaVotes, realMadridVotes);
+    return data.choices[0]?.message?.content || 'Unable to generate narration at this time.';
   } catch (error) {
-    console.warn('OpenAI API not available, using local narration:', error);
-    return generateLocalNarration(barcelonaVotes, realMadridVotes);
+    console.warn('OpenAI API not available:', error);
+    throw error;
   }
 };
 
@@ -91,7 +58,7 @@ export const Narration = ({ voteData, isEnabled }: NarrationProps) => {
       const now = Date.now();
       const timeSinceLastUpdate = now - lastUpdateRef.current;
       
-      // Only update narration every 20 seconds
+      // Only update narration every 15 seconds
       if (timeSinceLastUpdate >= updateInterval) {
         const generateNarration = async () => {
           setIsLoading(true);
@@ -101,6 +68,7 @@ export const Narration = ({ voteData, isEnabled }: NarrationProps) => {
             lastUpdateRef.current = now;
           } catch (error) {
             console.error('Error generating narration:', error);
+            setNarrationText('Unable to generate narration at this time.');
           } finally {
             setIsLoading(false);
           }
